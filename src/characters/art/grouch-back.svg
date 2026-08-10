@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- abrigo robado -->
+  <path d="M600 1020 C404 1020 266 1140 244 1400 L956 1400 C934 1140 796 1020 600 1020 Z" fill="#2e7d32"/>
+  <path d="M600 1020 C404 1020 266 1140 244 1400 L338 1400 C356 1170 456 1070 600 1070 C744 1070 844 1170 862 1400 L956 1400 C934 1140 796 1020 600 1020 Z" fill="#43a047"/>
+  <ellipse cx="600" cy="1026" rx="176" ry="54" fill="#1b5e20"/>
+  <!-- cuello -->
+  <rect x="530" y="770" width="140" height="290" rx="66" fill="#5f9634"/>
+  <!-- orejas puntiagudas -->
+  <path d="M382 560 L300 470 L336 640 Z" fill="#7cb342"/>
+  <path d="M818 560 L900 470 L864 640 Z" fill="#7cb342"/>
+  <!-- cabeza -->
+  <ellipse cx="600" cy="570" rx="226" ry="266" fill="#7cb342"/>
+  <ellipse cx="600" cy="700" rx="150" ry="120" fill="#8bc34a" opacity=".55"/>
+  <!-- ojos amarillos y ladinos -->
+  <ellipse cx="510" cy="540" rx="46" ry="36" fill="#fff59d"/>
+  <ellipse cx="690" cy="540" rx="46" ry="36" fill="#fff59d"/>
+  <ellipse cx="520" cy="544" rx="13" ry="20" fill="#33691e"/>
+  <ellipse cx="700" cy="544" rx="13" ry="20" fill="#33691e"/>
+  <path d="M464 522 Q510 496 556 520" fill="none" stroke="#558b2f" stroke-width="9" stroke-linecap="round"/>
+  <path d="M644 520 Q690 496 736 522" fill="none" stroke="#558b2f" stroke-width="9" stroke-linecap="round"/>
+  <!-- nariz respingona -->
+  <path d="M600 596 C640 616 654 660 620 672 C596 680 572 668 570 648 C568 626 582 604 600 596 Z" fill="#8bc34a"/>
+  <!-- sonrisa torcida y ancha -->
+  <path d="M470 712 Q600 800 736 700" fill="none" stroke="#33691e" stroke-width="14" stroke-linecap="round"/>
+  <path d="M498 730 Q600 786 706 722 L698 742 Q600 800 508 748 Z" fill="#ffffff"/>
+</svg>

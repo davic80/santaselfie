@@ -1,0 +1,5 @@
+# Bloque para añadir al Caddyfile del servidor. El host sale de
+# SANTASELFIE_HOST en .env. Caddy pide y renueva el certificado TLS solo.
+{$SANTASELFIE_HOST} {
+	reverse_proxy santaselfie:80
+}

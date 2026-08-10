@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- túnica -->
+  <path d="M600 1010 C398 1010 256 1132 234 1400 L966 1400 C944 1132 802 1010 600 1010 Z" fill="#4527a0"/>
+  <path d="M600 1010 C398 1010 256 1132 234 1400 L332 1400 C350 1160 454 1062 600 1062 C746 1062 850 1160 868 1400 L966 1400 C944 1132 802 1010 600 1010 Z" fill="#5e35b1"/>
+  <ellipse cx="600" cy="1016" rx="180" ry="54" fill="#311b92"/>
+  <!-- cuello -->
+  <rect x="528" y="770" width="144" height="290" rx="68" fill="#dcae90"/>
+  <!-- orejas -->
+  <ellipse cx="382" cy="606" rx="40" ry="54" fill="#f0c8ab"/>
+  <ellipse cx="818" cy="606" rx="40" ry="54" fill="#f0c8ab"/>
+  <!-- cabeza alargada -->
+  <ellipse cx="600" cy="570" rx="220" ry="272" fill="#f0c8ab"/>
+  <!-- arrugas -->
+  <path d="M436 486 Q472 470 508 480" fill="none" stroke="#d8a888" stroke-width="7" stroke-linecap="round"/>
+  <path d="M692 480 Q728 470 764 486" fill="none" stroke="#d8a888" stroke-width="7" stroke-linecap="round"/>
+  <!-- ojos azules -->
+  <ellipse cx="512" cy="556" rx="30" ry="28" fill="#ffffff"/>
+  <ellipse cx="688" cy="556" rx="30" ry="28" fill="#ffffff"/>
+  <circle cx="516" cy="558" r="16" fill="#1e88e5"/>
+  <circle cx="692" cy="558" r="16" fill="#1e88e5"/>
+  <circle cx="516" cy="558" r="7" fill="#1a237e"/>
+  <circle cx="692" cy="558" r="7" fill="#1a237e"/>
+  <circle cx="523" cy="551" r="5" fill="#ffffff"/>
+  <circle cx="699" cy="551" r="5" fill="#ffffff"/>
+  <!-- nariz larga y torcida -->
+  <path d="M596 570 C586 620 566 656 570 682 C574 706 616 712 634 694 C648 680 640 646 628 616 C620 596 612 580 606 570 Z" fill="#e5b795"/>
+  <path d="M570 682 C574 706 616 712 634 694 C616 700 584 696 570 682 Z" fill="#d8a888"/>
+  <!-- boca -->
+  <path d="M552 760 Q600 792 648 760" fill="none" stroke="#a9705a" stroke-width="11" stroke-linecap="round"/>
+</svg>

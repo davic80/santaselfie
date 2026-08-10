@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- gorro -->
+  <path d="M382 430 C362 214 502 128 642 164 C782 200 852 314 906 398 C874 440 846 462 824 462 C702 468 480 452 382 430 Z" fill="#d32f2f"/>
+  <path d="M642 164 C782 200 852 314 906 398 C880 432 856 452 836 459 C812 372 748 254 642 164 Z" fill="#b71c1c"/>
+  <circle cx="928" cy="412" r="54" fill="#ffffff"/>
+  <rect x="378" y="392" width="444" height="74" rx="37" fill="#ffffff"/>
+  <rect x="378" y="428" width="444" height="38" rx="19" fill="#eceff1"/>
+</svg>

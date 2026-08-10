@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- gorro caído hacia la izquierda -->
+  <path d="M816 430 C838 226 700 132 560 166 C420 200 350 312 296 396 C328 438 356 460 378 460 C500 466 718 452 816 430 Z" fill="#c62828"/>
+  <path d="M560 166 C420 200 350 312 296 396 C320 428 344 448 364 455 C388 370 452 254 560 166 Z" fill="#a01e1e"/>
+  <circle cx="274" cy="410" r="52" fill="#f5f5f5"/>
+  <rect x="380" y="390" width="440" height="72" rx="36" fill="#f5f5f5"/>
+  <rect x="380" y="426" width="440" height="36" rx="18" fill="#e0e0e0"/>
+</svg>

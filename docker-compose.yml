@@ -1,0 +1,27 @@
+# santaselfie — solo la app, detrás del Caddy que ya sirve el resto de
+# ojoalprecio.com. El Caddy compartido hace reverse_proxy al contenedor por
+# nombre a través de una red Docker común.
+#
+#   1) PROXY_NETWORK en .env = la red del Caddy existente
+#   2) docker compose up -d
+#   3) En el Caddyfile del servidor:
+#        barba.ojoalprecio.com {
+#            reverse_proxy santaselfie:80
+#        }
+#      y luego: docker exec <caddy> caddy reload --config /etc/caddy/Caddyfile
+
+services:
+  santaselfie:
+    image: ghcr.io/davic80/santaselfie:${SANTASELFIE_TAG:-latest}
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      proxy:
+        aliases:
+          - santaselfie
+
+networks:
+  proxy:
+    external: true
+    name: ${PROXY_NETWORK:?set PROXY_NETWORK in .env to your existing Caddy network}

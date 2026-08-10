@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- abrigo de piel -->
+  <path d="M600 1000 C370 1000 226 1130 204 1400 L996 1400 C974 1130 830 1000 600 1000 Z" fill="#5d4037"/>
+  <path d="M600 1000 C370 1000 226 1130 204 1400 L308 1400 C328 1150 444 1052 600 1052 C756 1052 872 1150 892 1400 L996 1400 C974 1130 830 1000 600 1000 Z" fill="#795548"/>
+  <ellipse cx="600" cy="1008" rx="196" ry="58" fill="#4e342e"/>
+  <!-- cuello -->
+  <rect x="512" y="770" width="176" height="280" rx="80" fill="#c98a68"/>
+  <!-- orejas -->
+  <ellipse cx="356" cy="600" rx="44" ry="58" fill="#dda283"/>
+  <ellipse cx="844" cy="600" rx="44" ry="58" fill="#dda283"/>
+  <!-- cabeza ancha -->
+  <ellipse cx="600" cy="570" rx="250" ry="276" fill="#dda283"/>
+  <!-- mofletes colorados -->
+  <ellipse cx="440" cy="672" rx="66" ry="42" fill="#c96a54" opacity=".45"/>
+  <ellipse cx="760" cy="672" rx="66" ry="42" fill="#c96a54" opacity=".45"/>
+  <!-- ojos pequeños y bondadosos -->
+  <ellipse cx="508" cy="552" rx="26" ry="24" fill="#ffffff"/>
+  <ellipse cx="692" cy="552" rx="26" ry="24" fill="#ffffff"/>
+  <circle cx="512" cy="556" r="15" fill="#4e342e"/>
+  <circle cx="696" cy="556" r="15" fill="#4e342e"/>
+  <circle cx="518" cy="549" r="5" fill="#ffffff"/>
+  <circle cx="702" cy="549" r="5" fill="#ffffff"/>
+  <!-- nariz grande y bulbosa -->
+  <ellipse cx="600" cy="650" rx="66" ry="56" fill="#cf7f61"/>
+  <ellipse cx="576" cy="632" rx="20" ry="14" fill="#ffffff" opacity=".28"/>
+  <!-- boca -->
+  <path d="M534 748 Q600 792 666 748" fill="none" stroke="#7a3b2c" stroke-width="14" stroke-linecap="round"/>
+</svg>

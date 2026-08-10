@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- abrigo -->
+  <path d="M600 1010 C400 1010 258 1130 236 1400 L964 1400 C942 1130 800 1010 600 1010 Z" fill="#c62828"/>
+  <path d="M600 1010 C400 1010 258 1130 236 1400 L330 1400 C348 1160 452 1060 600 1060 C748 1060 852 1160 870 1400 L964 1400 C942 1130 800 1010 600 1010 Z" fill="#e53935"/>
+  <ellipse cx="600" cy="1016" rx="182" ry="56" fill="#b71c1c"/>
+  <!-- cuello -->
+  <rect x="522" y="760" width="156" height="290" rx="74" fill="#e0a181"/>
+  <!-- orejas -->
+  <ellipse cx="370" cy="600" rx="42" ry="56" fill="#f6c8a6"/>
+  <ellipse cx="830" cy="600" rx="42" ry="56" fill="#f6c8a6"/>
+  <ellipse cx="374" cy="600" rx="18" ry="30" fill="#e0a181"/>
+  <ellipse cx="826" cy="600" rx="18" ry="30" fill="#e0a181"/>
+  <!-- cabeza -->
+  <ellipse cx="600" cy="570" rx="235" ry="270" fill="#f6c8a6"/>
+  <!-- mofletes -->
+  <ellipse cx="452" cy="672" rx="58" ry="38" fill="#ef8f7f" opacity=".5"/>
+  <ellipse cx="748" cy="672" rx="58" ry="38" fill="#ef8f7f" opacity=".5"/>
+  <!-- ojos -->
+  <ellipse cx="512" cy="545" rx="31" ry="34" fill="#ffffff"/>
+  <ellipse cx="688" cy="545" rx="31" ry="34" fill="#ffffff"/>
+  <circle cx="516" cy="550" r="18" fill="#3b2a24"/>
+  <circle cx="692" cy="550" r="18" fill="#3b2a24"/>
+  <circle cx="523" cy="542" r="6" fill="#ffffff"/>
+  <circle cx="699" cy="542" r="6" fill="#ffffff"/>
+  <!-- nariz -->
+  <ellipse cx="600" cy="635" rx="57" ry="49" fill="#ef8f7f"/>
+  <ellipse cx="582" cy="620" rx="19" ry="13" fill="#ffffff" opacity=".35"/>
+  <!-- boca -->
+  <path d="M544 726 Q600 776 656 726" fill="none" stroke="#a8503f" stroke-width="13" stroke-linecap="round"/>
+</svg>
