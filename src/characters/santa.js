@@ -9,6 +9,10 @@ export default {
   theme: ['#2b6b4f', '#0f3d2e'],
   hairShape: 'fluffy',
   hairColor: '#ffffff',
+  hairSize: 1,
+
+  // Dónde puede nacer pelo nuevo: su cabeza, con un poco de margen.
+  growArea: { cx: 600, cy: 570, rx: 246, ry: 282 },
 
   zones: [
     // Pelo que asoma por debajo del gorro, a los lados.

@@ -9,6 +9,8 @@ export default {
   theme: ['#3b2f6b', '#171233'],
   hairShape: 'wavy',
   hairColor: '#f5f5f5',
+  hairSize: 1,
+  growArea: { cx: 600, cy: 570, rx: 232, ry: 284 },
 
   zones: [
     { kind: 'arc', cx: 600, cy: 570, rx: 228, ry: 280, from: 150, to: 200, count: 5, layers: 2, layerStep: 18 },

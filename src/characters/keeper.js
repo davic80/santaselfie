@@ -9,6 +9,8 @@ export default {
   theme: ['#4d3b2a', '#241a12'],
   hairShape: 'fluffy',
   hairColor: '#4a342a',
+  hairSize: 1.1,
+  growArea: { cx: 600, cy: 570, rx: 262, ry: 288 },
 
   zones: [
     // Melena que cubre todo el cráneo.

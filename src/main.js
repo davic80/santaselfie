@@ -88,9 +88,17 @@ function frame() {
   cloth.step();
   renderer.draw(state.character, cloth);
 
+  // El cursor se voltea para enseñar hacia dónde sopla el secador, y se marca
+  // en gris cuando la herramienta no puede actuar ahí (crecer fuera de la cara).
+  const zoom = pointer.down ? 0.85 : 1;
+  const flip = state.tool.direction ?? 1;
   cursorEl.style.transform =
-    `translate(${pointer.clientX}px, ${pointer.clientY}px) scale(${pointer.down ? 0.85 : 1})`;
+    `translate(${pointer.clientX}px, ${pointer.clientY}px) scale(${zoom * flip}, ${zoom})`;
   cursorEl.classList.toggle('is-visible', pointer.inside);
+  cursorEl.classList.toggle(
+    'is-blocked',
+    Boolean(state.tool.canApply) && !state.tool.canApply(pointer, state),
+  );
 }
 
 syncToolbar = buildToolbar(toolbarEl, app);

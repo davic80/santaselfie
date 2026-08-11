@@ -56,12 +56,25 @@ export const TOOLS = [
     id: 'dryer',
     name: 'Secador',
     icon: '💨',
-    hint: 'Sopla el pelo a un lado',
+    hint: 'Arrastra hacia donde quieras echar el pelo',
+
+    // Sentido en el que sopla: +1 a la derecha, -1 a la izquierda. Se mantiene
+    // entre golpes de secador para que no cambie solo, y el cursor lo refleja.
+    direction: 1,
+
     apply(cloth, p) {
-      const side = p.x < 600 ? 1 : -1;
+      if (p.justPressed) {
+        // Al empezar, sopla hacia fuera de la cara.
+        this.direction = p.x < 600 ? -1 : 1;
+      }
+      const dx = p.x - p.px;
+      if (Math.abs(dx) > 1.5) {
+        this.direction = Math.sign(dx);
+      }
+
       for (const h of cloth.near(p.x, p.y, DRYER_RADIUS)) {
         if (h.pinned) continue;
-        h.addForce(side * DRYER_FORCE, -DRYER_FORCE * 0.25);
+        h.addForce(this.direction * DRYER_FORCE, -DRYER_FORCE * 0.25);
       }
     },
   },
@@ -70,9 +83,20 @@ export const TOOLS = [
     id: 'grow',
     name: 'Crecer',
     icon: '🌱',
-    hint: 'Haz crecer pelo nuevo',
+    hint: 'Haz crecer pelo nuevo (solo en la cara)',
     usesColor: true,
+
+    // El pelo solo nace donde puede nacer: dentro de la cabeza del personaje.
+    canApply(p, state) {
+      const { cx, cy, rx, ry } = state.character.growArea;
+      const nx = (p.x - cx) / rx;
+      const ny = (p.y - cy) / ry;
+      return nx * nx + ny * ny <= 1;
+    },
+
     apply(cloth, p, state) {
+      if (!this.canApply(p, state)) return;
+
       // Un mechón nuevo cada cierta distancia, para que no salga un pegote.
       if (!p.justPressed) {
         const d = Math.hypot(p.x - this._lastX, p.y - this._lastY);
@@ -85,7 +109,7 @@ export const TOOLS = [
         pinned: true,
         color: state.color,
         shape: state.character.hairShape,
-        size: state.character.zones[0].size || 1,
+        size: state.character.hairSize || 1,
         variant: randomVariant(),
       }));
     },
