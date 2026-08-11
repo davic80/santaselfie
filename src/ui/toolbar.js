@@ -84,13 +84,21 @@ export function buildToolbar(left, right, app) {
   }
 
   // --- Personajes ---
+  // Solo la cara: ocho nombres no caben en el raíl, así que el nombre del que
+  // esté elegido se enseña debajo, en la etiqueta del grupo.
   const chars = group('group--characters');
+  const charGrid = document.createElement('div');
+  charGrid.className = 'characters__grid';
   for (const c of CHARACTERS) {
-    const el = button('chip', `${c.emoji} ${c.name}`, `Cambiar a ${c.name}`);
+    const el = button('chip', c.emoji, `Cambiar a ${c.name}`);
     el.dataset.character = c.id;
     el.addEventListener('click', () => app.setCharacter(c.id));
-    chars.append(el);
+    charGrid.append(el);
   }
+  const charLabel = Object.assign(document.createElement('span'), {
+    className: 'group__label',
+  });
+  chars.append(charGrid, charLabel);
 
   // --- Acciones ---
   const actions = group('group--actions');
@@ -122,6 +130,7 @@ export function buildToolbar(left, right, app) {
     for (const el of right.querySelectorAll('[data-character]')) {
       el.classList.toggle('is-active', el.dataset.character === state.character.id);
     }
+    charLabel.textContent = state.character.name;
     for (const el of left.querySelectorAll('[data-tool]')) {
       el.classList.toggle('is-active', el.dataset.tool === state.tool.id);
     }

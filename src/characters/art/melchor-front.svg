@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- corona de picos -->
+  <path d="M392 412 L392 300 L468 366 L544 268 L600 350 L656 268 L732 366 L808 300 L808 412 Z" fill="#e0b73a"/>
+  <path d="M392 412 L392 300 L468 366 L544 268 L600 350 L600 412 Z" fill="#f0cd57"/>
+  <circle cx="544" cy="262" r="17" fill="#e53935"/>
+  <circle cx="656" cy="262" r="17" fill="#43a047"/>
+  <circle cx="600" cy="344" r="15" fill="#42a5f5"/>
+  <rect x="388" y="398" width="424" height="74" rx="18" fill="#d4a017"/>
+  <rect x="388" y="398" width="424" height="30" rx="15" fill="#f0cd57"/>
+  <circle cx="470" cy="436" r="16" fill="#26a69a"/>
+  <circle cx="600" cy="436" r="19" fill="#e53935"/>
+  <circle cx="730" cy="436" r="16" fill="#5c6bc0"/>
+</svg>

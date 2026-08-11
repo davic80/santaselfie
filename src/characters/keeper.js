@@ -6,7 +6,7 @@ export default {
   name: 'El Guardabosques',
   emoji: '🪵',
   art: { back, front },
-  theme: ['#4d3b2a', '#241a12'],
+  theme: ['#8a6a48', '#4a3524'],
   hairShape: 'fluffy',
   hairColor: '#4a342a',
   hairSize: 1.1,

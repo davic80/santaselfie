@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- manto carmesí -->
+  <path d="M600 1010 C398 1010 256 1132 234 1400 L966 1400 C944 1132 802 1010 600 1010 Z" fill="#8e1b1b"/>
+  <path d="M600 1010 C398 1010 256 1132 234 1400 L332 1400 C350 1160 454 1062 600 1062 C746 1062 850 1160 868 1400 L966 1400 C944 1132 802 1010 600 1010 Z" fill="#c62828"/>
+  <path d="M600 1052 C470 1052 372 1130 340 1400 L392 1400 C420 1160 500 1096 600 1096 C700 1096 780 1160 808 1400 L860 1400 C828 1130 730 1052 600 1052 Z" fill="#d4a017"/>
+  <ellipse cx="600" cy="1016" rx="180" ry="54" fill="#7a1414"/>
+  <!-- cuello -->
+  <rect x="526" y="762" width="148" height="290" rx="70" fill="#e0b492"/>
+  <!-- orejas -->
+  <ellipse cx="378" cy="600" rx="40" ry="54" fill="#f2cdae"/>
+  <ellipse cx="822" cy="600" rx="40" ry="54" fill="#f2cdae"/>
+  <!-- cabeza -->
+  <ellipse cx="600" cy="570" rx="225" ry="268" fill="#f2cdae"/>
+  <!-- arrugas de anciano -->
+  <path d="M444 490 Q478 474 512 484" fill="none" stroke="#dcae8b" stroke-width="7" stroke-linecap="round"/>
+  <path d="M688 484 Q722 474 756 490" fill="none" stroke="#dcae8b" stroke-width="7" stroke-linecap="round"/>
+  <path d="M452 596 Q470 610 462 628" fill="none" stroke="#dcae8b" stroke-width="6" stroke-linecap="round"/>
+  <path d="M748 596 Q730 610 738 628" fill="none" stroke="#dcae8b" stroke-width="6" stroke-linecap="round"/>
+  <!-- ojos -->
+  <ellipse cx="514" cy="545" rx="29" ry="30" fill="#ffffff"/>
+  <ellipse cx="686" cy="545" rx="29" ry="30" fill="#ffffff"/>
+  <circle cx="518" cy="549" r="16" fill="#4e342e"/>
+  <circle cx="690" cy="549" r="16" fill="#4e342e"/>
+  <circle cx="524" cy="542" r="5" fill="#ffffff"/>
+  <circle cx="696" cy="542" r="5" fill="#ffffff"/>
+  <!-- nariz -->
+  <path d="M598 566 C590 610 574 646 580 668 C588 690 626 692 640 674 C650 660 640 626 626 596 Z" fill="#e6bd9b"/>
+  <!-- boca -->
+  <path d="M552 730 Q600 764 648 730" fill="none" stroke="#a8735a" stroke-width="12" stroke-linecap="round"/>
+</svg>

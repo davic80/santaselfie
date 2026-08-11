@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- corona alta con joya central -->
+  <path d="M392 412 L392 322 L600 246 L808 322 L808 412 Z" fill="#e0b73a"/>
+  <path d="M392 412 L392 322 L600 246 L600 412 Z" fill="#f0cd57"/>
+  <path d="M600 232 l16 30 34 6 -25 24 6 34 -31-16 -31 16 6-34 -25-24 34-6 Z" fill="#42a5f5"/>
+  <rect x="388" y="398" width="424" height="76" rx="18" fill="#d4a017"/>
+  <rect x="388" y="398" width="424" height="30" rx="15" fill="#f0cd57"/>
+  <circle cx="466" cy="438" r="17" fill="#26a69a"/>
+  <circle cx="600" cy="438" r="20" fill="#ab47bc"/>
+  <circle cx="734" cy="438" r="17" fill="#e53935"/>
+</svg>

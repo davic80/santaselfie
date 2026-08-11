@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- sin gorro: solo la sombra del pelaje sobre la frente y unos copos -->
+  <ellipse cx="600" cy="392" rx="246" ry="74" fill="#0b2b3a" opacity=".08"/>
+  <g fill="#ffffff" opacity=".75">
+    <circle cx="222" cy="286" r="9"/>
+    <circle cx="318" cy="196" r="6"/>
+    <circle cx="962" cy="252" r="9"/>
+    <circle cx="878" cy="168" r="6"/>
+  </g>
+</svg>

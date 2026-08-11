@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- hombrazos peludos -->
+  <path d="M600 980 C346 980 196 1122 174 1400 L1026 1400 C1004 1122 854 980 600 980 Z" fill="#cfe4ef"/>
+  <path d="M600 980 C346 980 196 1122 174 1400 L292 1400 C312 1140 440 1032 600 1032 C760 1032 888 1140 908 1400 L1026 1400 C1004 1122 854 980 600 980 Z" fill="#eef7fb"/>
+  <ellipse cx="600" cy="988" rx="210" ry="60" fill="#b9d5e4"/>
+  <!-- cuello ancho -->
+  <rect x="500" y="756" width="200" height="280" rx="90" fill="#cbe3ef"/>
+  <!-- orejas -->
+  <ellipse cx="344" cy="592" rx="46" ry="60" fill="#cbe3ef"/>
+  <ellipse cx="856" cy="592" rx="46" ry="60" fill="#cbe3ef"/>
+  <!-- cabezón -->
+  <ellipse cx="600" cy="570" rx="256" ry="280" fill="#cbe3ef"/>
+  <!-- morro claro -->
+  <ellipse cx="600" cy="680" rx="168" ry="140" fill="#e3f1f8"/>
+  <!-- ojos hundidos y simpáticos -->
+  <ellipse cx="504" cy="545" rx="34" ry="34" fill="#ffffff"/>
+  <ellipse cx="696" cy="545" rx="34" ry="34" fill="#ffffff"/>
+  <circle cx="509" cy="550" r="18" fill="#1e3a4a"/>
+  <circle cx="701" cy="550" r="18" fill="#1e3a4a"/>
+  <circle cx="516" cy="542" r="6" fill="#ffffff"/>
+  <circle cx="708" cy="542" r="6" fill="#ffffff"/>
+  <!-- nariz de bola azul -->
+  <ellipse cx="600" cy="635" rx="62" ry="50" fill="#8fb8cd"/>
+  <ellipse cx="578" cy="620" rx="19" ry="13" fill="#ffffff" opacity=".35"/>
+  <!-- boca abierta con dos colmillos -->
+  <path d="M520 722 Q600 800 680 722 Q600 762 520 722 Z" fill="#3c5c6b"/>
+  <path d="M552 736 l20 0 -10 34 Z" fill="#ffffff"/>
+  <path d="M628 736 l20 0 -10 34 Z" fill="#ffffff"/>
+</svg>

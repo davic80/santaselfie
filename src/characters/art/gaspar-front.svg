@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- corona redondeada, de arcos -->
+  <path d="M392 410 L392 340 Q446 268 500 340 Q546 262 600 330 Q654 262 700 340 Q754 268 808 340 L808 410 Z" fill="#e0b73a"/>
+  <path d="M392 410 L392 340 Q446 268 500 340 Q546 262 600 330 L600 410 Z" fill="#f0cd57"/>
+  <circle cx="500" cy="330" r="14" fill="#ab47bc"/>
+  <circle cx="700" cy="330" r="14" fill="#26a69a"/>
+  <circle cx="600" cy="320" r="16" fill="#e53935"/>
+  <rect x="388" y="396" width="424" height="76" rx="18" fill="#d4a017"/>
+  <rect x="388" y="396" width="424" height="30" rx="15" fill="#f0cd57"/>
+  <path d="M420 440 l14-22 14 22 -14 22 Z" fill="#43a047"/>
+  <path d="M600 434 l18-26 18 26 -18 26 Z" fill="#ffffff" transform="translate(-18,0)"/>
+  <path d="M766 440 l14-22 14 22 -14 22 Z" fill="#42a5f5"/>
+</svg>

@@ -1,6 +1,6 @@
 # Barba — selfie navideña
 
-Corta, peina y pinta la barba y el pelo de cuatro personajes. Inspirado en el
+Corta, peina y pinta la barba y el pelo de ocho personajes. Inspirado en el
 *Santa Selfie* de Google Santa Tracker, reescrito desde cero en JavaScript
 moderno sin dependencias de runtime.
 
@@ -38,7 +38,8 @@ zones: [
 - `arc` — mechones fijos repartidos por un arco de elipse (el cráneo).
 - `dots` — mechones fijos en posiciones concretas (cejas, bigote).
 
-Los cuatro personajes son dibujos originales, inspirados en arquetipos
+Los ocho personajes (Papá Noel, El Gruñón, El Guardabosques, El Mago, Melchor,
+Gaspar, Baltasar y El Yeti) son dibujos originales, inspirados en arquetipos
 navideños y de cuento; no reproducen ningún diseño con derechos de autor.
 
 La interfaz se reparte en dos raíles: en pantalla **horizontal** se colocan a

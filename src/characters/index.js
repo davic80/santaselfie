@@ -2,8 +2,12 @@ import santa from './santa.js';
 import grouch from './grouch.js';
 import keeper from './keeper.js';
 import wizard from './wizard.js';
+import melchor from './melchor.js';
+import gaspar from './gaspar.js';
+import baltasar from './baltasar.js';
+import yeti from './yeti.js';
 
-export const CHARACTERS = [santa, grouch, keeper, wizard];
+export const CHARACTERS = [santa, grouch, keeper, wizard, melchor, gaspar, baltasar, yeti];
 
 const loaded = new Map();
 

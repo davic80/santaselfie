@@ -115,7 +115,9 @@ body.is-loading #stage { opacity: 0; }
     justify-content: center;
   }
 
-  .chip, .action { width: 100%; }
+  .characters__grid { grid-template-columns: repeat(2, auto); }
+
+  .action { width: 100%; }
 }
 
 /* Vertical: el personaje arriba y todos los controles en una barra abajo. */
@@ -155,17 +157,32 @@ button {
   cursor: pointer;
 }
 
+/* Los personajes van solo con su cara: ocho nombres no caben en el raíl. */
+.characters__grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 6px;
+  justify-content: center;
+}
+
 .chip {
-  padding: 7px 12px;
+  width: 44px;
+  height: 44px;
   border-radius: 999px;
+  font-size: 22px;
+  line-height: 1;
   background: var(--panel);
-  white-space: nowrap;
   text-align: center;
-  transition: background 150ms ease;
+  transition: background 150ms ease, transform 150ms ease;
 }
 
 .chip:hover { background: var(--panel-strong); }
-.chip.is-active { background: #fff; color: #16321f; }
+
+.chip.is-active {
+  background: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
 
 .tool {
   display: grid;
@@ -287,7 +304,7 @@ button {
   .app { gap: 8px; padding: 8px; }
   .rail { gap: 8px; padding: 8px; }
   .tool { width: 52px; font-size: 19px; }
-  .chip { padding: 6px 10px; font-size: 13px; }
+  .chip { width: 36px; height: 36px; font-size: 18px; }
   .action { padding: 7px 11px; font-size: 13px; }
   .deco, .picker { width: 34px; height: 34px; }
   .thumb { width: 26px; height: 26px; }
