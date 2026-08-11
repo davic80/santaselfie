@@ -1,4 +1,5 @@
 import { CHARACTERS, loadArt } from './characters/index.js';
+import { DEFAULT_COLOR } from './config.js';
 import { buildCloth } from './engine/build.js';
 import { Renderer } from './engine/render.js';
 import { Pointer } from './input.js';
@@ -8,7 +9,8 @@ import { savePhoto } from './ui/photo.js';
 
 const canvas = document.querySelector('#stage');
 const stageEl = document.querySelector('.stage');
-const toolbarEl = document.querySelector('#toolbar');
+const railLeft = document.querySelector('#rail-left');
+const railRight = document.querySelector('#rail-right');
 const cursorEl = document.querySelector('#cursor');
 
 const renderer = new Renderer(canvas);
@@ -17,7 +19,7 @@ const pointer = new Pointer(canvas, renderer);
 const state = {
   character: CHARACTERS[0],
   tool: TOOLS[1], // tijeras
-  color: '#e53935',
+  color: DEFAULT_COLOR,
   decoration: 'bauble',
 };
 
@@ -101,7 +103,7 @@ function frame() {
   );
 }
 
-syncToolbar = buildToolbar(toolbarEl, app);
+syncToolbar = buildToolbar(railLeft, railRight, app);
 applyTheme();
 updateCursor();
 resize();

@@ -4,6 +4,7 @@
   --panel: rgba(255, 255, 255, 0.1);
   --panel-strong: rgba(255, 255, 255, 0.22);
   --ink: #fff;
+  --muted: rgba(255, 255, 255, 0.55);
   color-scheme: dark;
 }
 
@@ -28,15 +29,17 @@ body {
 
 .app {
   display: grid;
-  grid-template-rows: 1fr auto;
   height: 100dvh;
-  padding: 12px;
   gap: 10px;
+  padding: 10px;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
 }
 
 .stage {
+  grid-area: stage;
   display: grid;
   place-items: center;
+  min-width: 0;
   min-height: 0;
 }
 
@@ -48,15 +51,13 @@ body {
 
 body.is-loading #stage { opacity: 0; }
 
-/* --- Barra de herramientas --- */
+/* --- Controles ---------------------------------------------------------- */
 
-.toolbar {
+.rail {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  gap: 8px 14px;
-  padding: 10px 14px;
+  gap: 10px;
+  padding: 10px;
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(10px);
@@ -71,10 +72,80 @@ body.is-loading #stage { opacity: 0; }
 
 .group.is-dim { opacity: 0.4; }
 
-.group + .group {
-  padding-left: 14px;
-  border-left: 1px solid rgba(255, 255, 255, 0.16);
+.group__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
 }
+
+/* Horizontal: herramientas a la izquierda, personajes a la derecha, y el
+   personaje centrado entre los dos raíles. */
+@media (orientation: landscape) {
+  .app {
+    grid-template-areas: "left stage right";
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .rails { display: contents; }
+
+  .rail {
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .rail::-webkit-scrollbar { display: none; }
+  .rail--left { grid-area: left; }
+  .rail--right { grid-area: right; }
+
+  .group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .group + .group {
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .group--decorations {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+  }
+
+  .chip, .action { width: 100%; }
+}
+
+/* Vertical: el personaje arriba y todos los controles en una barra abajo. */
+@media (orientation: portrait) {
+  .app {
+    grid-template-areas: "stage" "rails";
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .rails {
+    grid-area: rails;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .rail {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 14px;
+  }
+
+  .group + .group {
+    padding-left: 14px;
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
+  }
+}
+
+/* --- Botones ------------------------------------------------------------ */
 
 button {
   font: inherit;
@@ -89,7 +160,8 @@ button {
   border-radius: 999px;
   background: var(--panel);
   white-space: nowrap;
-  transition: background 150ms ease, transform 150ms ease;
+  text-align: center;
+  transition: background 150ms ease;
 }
 
 .chip:hover { background: var(--panel-strong); }
@@ -108,7 +180,7 @@ button {
 }
 
 .tool:hover { background: var(--panel-strong); }
-.tool.is-active { background: #fff; transform: translateY(-3px); }
+.tool.is-active { background: #fff; }
 .tool.is-active .tool__name { color: #16321f; }
 
 .tool__name {
@@ -118,33 +190,27 @@ button {
   opacity: 0.9;
 }
 
-.swatch {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--swatch);
-  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2);
-  transition: transform 120ms ease, box-shadow 120ms ease;
-}
-
-.swatch:hover { transform: scale(1.12); }
-.swatch.is-active {
-  transform: scale(1.2);
-  box-shadow: 0 0 0 3px #fff;
-}
-
+/* El selector nativo: en iOS y Android abre la rueda de color del sistema. */
 .picker {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background: none;
+  background: conic-gradient(#f44, #fa0, #ff0, #4c4, #0cf, #44f, #b4f, #f44);
   cursor: pointer;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
 }
 
-.picker::-webkit-color-swatch-wrapper { padding: 2px; }
-.picker::-webkit-color-swatch { border: 2px dashed rgba(255, 255, 255, 0.7); border-radius: 50%; }
+.picker::-webkit-color-swatch-wrapper { padding: 5px; }
+.picker::-webkit-color-swatch {
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+}
+.picker::-moz-color-swatch {
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+}
 
 .deco {
   display: grid;
@@ -170,7 +236,29 @@ button {
 .action--primary { background: #fff; color: #16321f; font-weight: 700; }
 .action--primary:hover { background: #e8f5e9; }
 
-/* --- Cursor de herramienta --- */
+.group--footer {
+  gap: 8px;
+  font-size: 12px;
+}
+
+.coffee {
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 200ms ease, background 200ms ease;
+}
+
+.coffee:hover {
+  border-color: #fff;
+  background: var(--panel);
+}
+
+.version { color: var(--muted); }
+
+/* --- Cursor de herramienta ---------------------------------------------- */
 
 .cursor {
   position: fixed;
@@ -193,12 +281,16 @@ button {
   filter: grayscale(1);
 }
 
-@media (max-width: 900px) {
-  .toolbar { gap: 6px 10px; padding: 8px; }
-  .group + .group { padding-left: 10px; }
+/* --- Pantallas pequeñas -------------------------------------------------- */
+
+@media (max-width: 900px), (max-height: 620px) {
+  .app { gap: 8px; padding: 8px; }
+  .rail { gap: 8px; padding: 8px; }
   .tool { width: 52px; font-size: 19px; }
   .chip { padding: 6px 10px; font-size: 13px; }
-  .swatch { width: 24px; height: 24px; }
+  .action { padding: 7px 11px; font-size: 13px; }
+  .deco, .picker { width: 34px; height: 34px; }
+  .thumb { width: 26px; height: 26px; }
 }
 
 @media (pointer: coarse) {

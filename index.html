@@ -13,7 +13,12 @@
     <div class="stage">
       <canvas id="stage"></canvas>
     </div>
-    <div id="toolbar" class="toolbar"></div>
+    <!-- En horizontal `.rails` es display:contents y cada raíl se coloca a un
+         lado del personaje; en vertical los dos caen juntos a la barra de abajo. -->
+    <div class="rails">
+      <div id="rail-left" class="rail rail--left"></div>
+      <div id="rail-right" class="rail rail--right"></div>
+    </div>
   </main>
   <div id="cursor" class="cursor" aria-hidden="true"></div>
   <script type="module" src="./src/main.js"></script>

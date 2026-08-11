@@ -18,10 +18,11 @@ export const DRAG_RADIUS = 40;
 export const DRYER_FORCE = 5500;
 export const DRYER_RADIUS = 320;
 
-export const PALETTE = [
-  '#ffffff', '#ffd54f', '#ff8a3d', '#e53935',
-  '#ec407a', '#ab47bc', '#5c6bc0', '#29b6f6',
-  '#26a69a', '#66bb6a', '#8d6e63', '#37474f',
-];
+// El color se elige con el selector nativo del sistema (<input type="color">),
+// que en iOS y Android abre la rueda de color del propio móvil.
+export const DEFAULT_COLOR = '#e53935';
 
 export const DECORATIONS = ['bauble', 'bow', 'holly', 'star', 'snowflake'];
+
+export const COFFEE_URL =
+  'https://www.paypal.com/donate/?hosted_button_id=7Z6JDTBCDCWHC';

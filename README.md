@@ -15,7 +15,8 @@ gravedad.
 
 - **Cortar** rompe las uniones de un mechón y lo desancla → cae y desaparece.
 - **Pintar** cambia el color de cada partícula (no hay sprites pretintados:
-  cualquier color vale, incluido el selector libre).
+  cualquier color vale). El color se elige con `<input type="color">`, que en
+  iOS y Android abre la rueda de color nativa del sistema.
 - **Peinar** desplaza las partículas moviendo su posición anterior, que es como
   se les da velocidad en Verlet.
 
@@ -39,6 +40,10 @@ zones: [
 
 Los cuatro personajes son dibujos originales, inspirados en arquetipos
 navideños y de cuento; no reproducen ningún diseño con derechos de autor.
+
+La interfaz se reparte en dos raíles: en pantalla **horizontal** se colocan a
+los lados con el personaje centrado; en **vertical** caen juntos a una barra
+abajo. Es solo CSS (`display: contents` en horizontal), sin JS de layout.
 
 ## Desarrollo
 
