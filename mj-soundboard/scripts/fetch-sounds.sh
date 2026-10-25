@@ -8,6 +8,7 @@
 #       ./scripts/fetch-sounds.sh heehee   # solo uno (para reajustar el corte)
 
 set -euo pipefail
+export LC_ALL=C   # punto decimal en awk/ffmpeg aunque el sistema esté en español
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUT="${ROOT}/public/sounds"
