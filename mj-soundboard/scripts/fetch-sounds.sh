@@ -19,7 +19,7 @@ command -v ffmpeg >/dev/null || { echo "Falta ffmpeg"; exit 1; }
 
 ONLY="${1:-}"
 
-while IFS=$'\t' read -r id label color key start dur src; do
+while IFS=$'\t' read -r id label color key start dur src album year; do
   [[ -z "${id}" || "${id}" == \#* ]] && continue
   [[ -n "${ONLY}" && "${ONLY}" != "${id}" ]] && continue
 
@@ -40,7 +40,7 @@ done < "${ROOT}/sounds.tsv"
 # Manifest para el front (todas las filas, haya o no mp3).
 awk -F'\t' 'BEGIN{print "["} !/^#/ && NF>=4 {
   if (n++) print ",";
-  printf "  {\"id\":\"%s\",\"label\":\"%s\",\"color\":\"%s\",\"key\":\"%s\"}", $1,$2,$3,$4
+  printf "  {\"id\":\"%s\",\"label\":\"%s\",\"color\":\"%s\",\"key\":\"%s\",\"album\":\"%s\",\"year\":\"%s\"}", $1,$2,$3,$4,$8,$9
 } END{print "\n]"}' "${ROOT}/sounds.tsv" > "${ROOT}/public/sounds.json"
 
 echo "==> Listo: ${OUT}"

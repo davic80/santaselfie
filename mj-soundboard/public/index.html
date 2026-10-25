@@ -31,30 +31,45 @@
   }
   .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 4vw, 24px) clamp(14px, 4vw, 24px); }
   .cell { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-  button.arcade {
-    --c: #f00;
-    width: 100%; aspect-ratio: 1; border-radius: 50%; border: 0; cursor: pointer;
+  button.vinyl {
+    --c: #c8102e;
+    position: relative; width: 100%; aspect-ratio: 1; border-radius: 50%;
+    border: 0; padding: 0; cursor: pointer;
     background:
-      radial-gradient(circle at 35% 30%, #ffffffaa 0 8%, transparent 22%),
-      radial-gradient(circle at 50% 55%, var(--c) 0 55%, color-mix(in srgb, var(--c), #000 45%) 70%);
-    box-shadow:
-      0 0 0 5px #0008, 0 0 0 9px #2b1b47, 0 9px 0 9px #0a0614,
-      0 10px 22px 10px #000a;
-    transform: translateY(0); transition: transform .05s, filter .05s;
+      conic-gradient(from 30deg, #ffffff00 0 10%, #ffffff22 14%, #ffffff00 20% 55%, #ffffff1a 60%, #ffffff00 66%),
+      repeating-radial-gradient(circle, #111 0 1px, #1c1c1c 1.5px 2.5px, #0d0d0d 3px);
+    box-shadow: 0 0 0 3px #000, 0 8px 18px #000c;
+    animation: spin 1.8s linear infinite paused;
+    transition: transform .08s, box-shadow .08s;
   }
-  button.arcade.on {
-    transform: translateY(6px); filter: brightness(1.35);
-    box-shadow: 0 0 0 5px #0008, 0 0 0 9px #2b1b47, 0 3px 0 9px #0a0614,
-      0 0 30px 12px var(--c);
+  button.vinyl .lbl {
+    position: absolute; inset: 24%; border-radius: 50%;
+    background: var(--c) center/cover no-repeat;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--ink, #fff); font-size: clamp(4px, 1.25vw, 7px); line-height: 1.25; text-align: center;
+    box-shadow: inset 0 0 0 2px #0004;
   }
-  .label { font-size: clamp(6px, 1.8vw, 9px); text-align: center; line-height: 1.4; min-height: 2.8em; margin-top: 16px; }
+  button.vinyl .lbl.cover { font-size: 0; }
+  button.vinyl .lbl::after {
+    content: ""; position: absolute; width: 7%; height: 7%; border-radius: 50%;
+    background: #0b0716; top: 46.5%; left: 46.5%;
+  }
+  button.vinyl .lbl b, button.vinyl .lbl i {
+    position: absolute; left: 10%; right: 10%; font-weight: normal; font-style: normal;
+  }
+  button.vinyl .lbl b { bottom: 57%; }
+  button.vinyl .lbl i { top: 60%; opacity: .8; }
+  button.vinyl.on { animation-play-state: running; transform: scale(.94);
+    box-shadow: 0 0 0 3px #000, 0 0 26px 6px var(--c); }
+  @keyframes spin { to { rotate: 360deg; } }
+  .label { font-size: clamp(6px, 1.8vw, 9px); text-align: center; line-height: 1.4; min-height: 2.8em; margin-top: 4px; }
   .key { opacity: .45; }
   footer { margin-top: 22px; font-size: 8px; opacity: .5; text-align: center; line-height: 1.8; }
 </style>
 </head>
 <body>
   <h1>MJ SOUNDBOARD</h1>
-  <div class="sub">INSERT COIN · PRESS ANY BUTTON</div>
+  <div class="sub">DROP THE NEEDLE · PRESS ANY RECORD</div>
   <div class="cabinet"><div class="grid" id="grid"></div></div>
   <footer>Teclado: 1234 · QWER · ASDF · ZXCV<br>Uso privado · sonidos © sus titulares</footer>
 <script>
@@ -82,17 +97,27 @@
       const src = ctx.createBufferSource();
       src.buffer = buf; src.connect(ctx.destination); src.start();
     } else blip(i);
+    const ms = buf ? buf.duration * 1000 : 300;
     btn.classList.add('on');
     clearTimeout(btn._t);
-    btn._t = setTimeout(() => btn.classList.remove('on'), 140);
+    btn._t = setTimeout(() => btn.classList.remove('on'), ms);
     navigator.vibrate?.(15);
   }
 
   sounds.forEach((s, i) => {
     const cell = document.createElement('div'); cell.className = 'cell';
     const btn = document.createElement('button');
-    btn.className = 'arcade'; btn.style.setProperty('--c', s.color);
-    btn.setAttribute('aria-label', s.label);
+    btn.className = 'vinyl'; btn.style.setProperty('--c', s.color);
+    btn.setAttribute('aria-label', `${s.label} (${s.album})`);
+    const lbl = document.createElement('div'); lbl.className = 'lbl';
+    lbl.innerHTML = `<b>${s.album}</b><i>${s.year}</i>`;
+    const [r, g, b] = s.color.match(/\w\w/g).map(h => parseInt(h, 16));
+    if (r * .3 + g * .59 + b * .11 > 160) lbl.style.setProperty('--ink', '#111');
+    btn.append(lbl);
+    // Portada opcional como galleta del vinilo.
+    const img = new Image();
+    img.onload = () => { lbl.style.backgroundImage = `url(${img.src})`; lbl.classList.add('cover'); };
+    img.src = `covers/${s.id}.jpg`;
     btn.addEventListener('pointerdown', e => { e.preventDefault(); play(s, i, btn); });
     const lab = document.createElement('div'); lab.className = 'label';
     lab.innerHTML = `${s.label}<br><span class="key">[${s.key.toUpperCase()}]</span>`;
