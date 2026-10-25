@@ -1,0 +1,4 @@
+# Bloque para el Caddyfile del servidor. El host sale de MJ_SOUNDBOARD_HOST en .env.
+{$MJ_SOUNDBOARD_HOST} {
+	reverse_proxy mj-soundboard:80
+}

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<title>MJ Soundboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #0b0716; --panel: #1b1030; --rim: #3a2466; --text: #f5e9ff; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background: radial-gradient(ellipse at top, #2a0f4a, var(--bg) 70%);
+    color: var(--text); font-family: "Press Start 2P", monospace;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 24px 16px; user-select: none;
+  }
+  h1 {
+    font-size: clamp(16px, 5vw, 32px); margin: 0 0 6px; letter-spacing: 2px;
+    color: #fff; text-shadow: 0 0 6px #ff2d55, 0 0 18px #ff2d55, 3px 3px 0 #30b0ff;
+  }
+  .sub { font-size: 10px; opacity: .7; margin-bottom: 20px; animation: blink 1.2s steps(2) infinite; }
+  @keyframes blink { 50% { opacity: .15; } }
+  .cabinet {
+    width: min(100%, 560px); padding: 22px; border-radius: 22px;
+    background: linear-gradient(180deg, var(--panel), #120a22);
+    border: 4px solid var(--rim);
+    box-shadow: inset 0 2px 0 #ffffff22, 0 20px 50px #000a;
+  }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 4vw, 24px) clamp(14px, 4vw, 24px); }
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  button.arcade {
+    --c: #f00;
+    width: 100%; aspect-ratio: 1; border-radius: 50%; border: 0; cursor: pointer;
+    background:
+      radial-gradient(circle at 35% 30%, #ffffffaa 0 8%, transparent 22%),
+      radial-gradient(circle at 50% 55%, var(--c) 0 55%, color-mix(in srgb, var(--c), #000 45%) 70%);
+    box-shadow:
+      0 0 0 5px #0008, 0 0 0 9px #2b1b47, 0 9px 0 9px #0a0614,
+      0 10px 22px 10px #000a;
+    transform: translateY(0); transition: transform .05s, filter .05s;
+  }
+  button.arcade.on {
+    transform: translateY(6px); filter: brightness(1.35);
+    box-shadow: 0 0 0 5px #0008, 0 0 0 9px #2b1b47, 0 3px 0 9px #0a0614,
+      0 0 30px 12px var(--c);
+  }
+  .label { font-size: clamp(6px, 1.8vw, 9px); text-align: center; line-height: 1.4; min-height: 2.8em; margin-top: 16px; }
+  .key { opacity: .45; }
+  footer { margin-top: 22px; font-size: 8px; opacity: .5; text-align: center; line-height: 1.8; }
+</style>
+</head>
+<body>
+  <h1>MJ SOUNDBOARD</h1>
+  <div class="sub">INSERT COIN · PRESS ANY BUTTON</div>
+  <div class="cabinet"><div class="grid" id="grid"></div></div>
+  <footer>Teclado: 1234 · QWER · ASDF · ZXCV<br>Uso privado · sonidos © sus titulares</footer>
+<script>
+(async () => {
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const grid = document.getElementById('grid');
+  const sounds = await fetch('sounds.json').then(r => r.json());
+  const buffers = {}, byKey = {};
+
+  // Si falta el mp3, suena un "blip" de 8 bits para que el botón no quede mudo.
+  function blip(i) {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'square';
+    o.frequency.setValueAtTime(220 * Math.pow(2, i / 5), ctx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(880 * Math.pow(2, i / 8), ctx.currentTime + 0.15);
+    g.gain.setValueAtTime(0.15, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+    o.connect(g).connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.25);
+  }
+
+  function play(s, i, btn) {
+    if (ctx.state === 'suspended') ctx.resume();
+    const buf = buffers[s.id];
+    if (buf) {
+      const src = ctx.createBufferSource();
+      src.buffer = buf; src.connect(ctx.destination); src.start();
+    } else blip(i);
+    btn.classList.add('on');
+    clearTimeout(btn._t);
+    btn._t = setTimeout(() => btn.classList.remove('on'), 140);
+    navigator.vibrate?.(15);
+  }
+
+  sounds.forEach((s, i) => {
+    const cell = document.createElement('div'); cell.className = 'cell';
+    const btn = document.createElement('button');
+    btn.className = 'arcade'; btn.style.setProperty('--c', s.color);
+    btn.setAttribute('aria-label', s.label);
+    btn.addEventListener('pointerdown', e => { e.preventDefault(); play(s, i, btn); });
+    const lab = document.createElement('div'); lab.className = 'label';
+    lab.innerHTML = `${s.label}<br><span class="key">[${s.key.toUpperCase()}]</span>`;
+    cell.append(btn, lab); grid.append(cell);
+    byKey[s.key.toLowerCase()] = () => play(s, i, btn);
+
+    fetch(`sounds/${s.id}.mp3`)
+      .then(r => r.ok ? r.arrayBuffer() : Promise.reject())
+      .then(a => ctx.decodeAudioData(a))
+      .then(b => { buffers[s.id] = b; })
+      .catch(() => {});
+  });
+
+  addEventListener('keydown', e => { if (!e.repeat) byKey[e.key.toLowerCase()]?.(); });
+})();
+</script>
+</body>
+</html>

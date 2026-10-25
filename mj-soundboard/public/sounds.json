@@ -1,0 +1,18 @@
+[
+  {"id":"heehee","label":"Hee-hee!","color":"#ff2d55","key":"1"},
+  {"id":"ow","label":"Ow!","color":"#ff9500","key":"2"},
+  {"id":"shamone","label":"Shamone!","color":"#ffcc00","key":"3"},
+  {"id":"woo","label":"Woo!","color":"#34c759","key":"4"},
+  {"id":"dah","label":"Dah!","color":"#00c7be","key":"q"},
+  {"id":"aaow","label":"Aaow!","color":"#30b0ff","key":"w"},
+  {"id":"hoo","label":"Hoo!","color":"#5856d6","key":"e"},
+  {"id":"chicka","label":"Chika!","color":"#af52de","key":"r"},
+  {"id":"whoo","label":"Whoo-hoo!","color":"#ffa3c4","key":"a"},
+  {"id":"annie","label":"Annie!","color":"#ff6b00","key":"s"},
+  {"id":"bad","label":"Who's bad!","color":"#e5ff00","key":"d"},
+  {"id":"billie","label":"Billie Jean","color":"#00ff85","key":"f"},
+  {"id":"thriller","label":"Thriller laugh","color":"#f2f2f2","key":"z"},
+  {"id":"beatit","label":"Beat it!","color":"#3d7bff","key":"x"},
+  {"id":"gasp","label":"Gasp","color":"#c644fc","key":"c"},
+  {"id":"heeheeow","label":"Hee-hee-ow!","color":"#ff00aa","key":"v"}
+]
