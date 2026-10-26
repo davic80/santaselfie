@@ -13,7 +13,7 @@ Es HTML + Web Audio puro, sin build. Si falta algún mp3, ese botón emite un *b
 `sounds.tsv` define cada vinilo: id, etiqueta, color de la galleta, tecla, inicio y
 duración del corte, la fuente (una URL de YouTube o `ytsearch1:consulta`), el disco y el año.
 
-Portadas (opcional): deja `public/covers/<id>.jpg` (cuadrada, unos 300 px) y se usa
+Portadas (opcional): deja `public/covers/<id>.jpg` (cuadrada, unos 300 px), relanza el script y se usa
 como galleta del vinilo en lugar del color con el título.
 
 ```bash

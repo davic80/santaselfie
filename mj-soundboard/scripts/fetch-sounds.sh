@@ -38,10 +38,28 @@ while IFS=$'\t' read -r id label color key start dur src album year; do
     -ac 1 -ar 44100 -codec:a libmp3lame -q:a 4 "${OUT}/${id}.mp3"
 done < "${ROOT}/sounds.tsv"
 
-# Manifest para el front (todas las filas, haya o no mp3).
-awk -F'\t' 'BEGIN{print "["} !/^#/ && NF>=4 {
-  if (n++) print ",";
-  printf "  {\"id\":\"%s\",\"label\":\"%s\",\"color\":\"%s\",\"key\":\"%s\",\"album\":\"%s\",\"year\":\"%s\"}", $1,$2,$3,$4,$8,$9
-} END{print "\n]"}' "${ROOT}/sounds.tsv" > "${ROOT}/public/sounds.json"
+# Manifest para el front. "file" solo aparece si existe el mp3, con un hash
+# del contenido para que el navegador no use una versión vieja en caché.
+json_escape() { printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'; }
+{
+  echo "["
+  sep=""
+  while IFS=$'\t' read -r id label color key start dur src album year; do
+    [[ -z "${id}" || "${id}" == \#* ]] && continue
+    file=""
+    if [[ -f "${OUT}/${id}.mp3" ]]; then
+      v="$(cksum < "${OUT}/${id}.mp3" | cut -d' ' -f1)"
+      file=",\"file\":\"sounds/${id}.mp3?v=${v}\""
+    fi
+    if [[ -f "${ROOT}/public/covers/${id}.jpg" ]]; then
+      file="${file},\"cover\":\"covers/${id}.jpg\""
+    fi
+    printf '%s  {"id":"%s","label":"%s","color":"%s","key":"%s","album":"%s","year":"%s"%s}' \
+      "${sep}" "${id}" "$(json_escape "${label}")" "${color}" "${key}" \
+      "$(json_escape "${album}")" "${year}" "${file}"
+    sep=$',\n'
+  done < "${ROOT}/sounds.tsv"
+  printf '\n]\n'
+} > "${ROOT}/public/sounds.json"
 
 echo "==> Listo: ${OUT}"
